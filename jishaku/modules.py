@@ -75,7 +75,7 @@ def resolve_extensions(bot: BotT, name: str) -> typing.List[str]:
             path = pathlib.Path(*module_parts)
             exts.extend(find_extensions_in(path))
         elif ext == '~':
-            exts.extend(bot.extensions)
+            exts.extend({key: value for key, value in bot.extensions.items() if key != 'jishaku'})
         else:
             exts.append(ext)
 
